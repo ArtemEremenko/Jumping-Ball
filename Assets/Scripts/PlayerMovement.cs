@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GroundChecker _groundChecker;
     
     private Rigidbody _rigidbody;
-    private float _playerSpeed = 10.0f;
-    private float _playerJumpForce = 200.0f;
+    private float _playerSpeed = 15.0f;
+    private float _playerJumpForce = 250.0f;
     
     private void Start()
     {
@@ -18,12 +18,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float moveZAxis = Input.GetAxis("Vertical") * _playerSpeed * Time.deltaTime;
-        float moveXAxis = Input.GetAxis("Horizontal") * _playerSpeed * Time.deltaTime;
-
-        Vector3 moveVector = new Vector3(moveXAxis, 0f, moveZAxis); 
-
-        _rigidbody.AddForce(moveVector * _playerSpeed); 
+        if (_groundChecker.IsOnGround())
+        {
+            Move();
+        }
         
         if (Input.GetKeyDown(KeyCode.Space) && _groundChecker.IsOnGround())
         {
@@ -35,5 +33,15 @@ public class PlayerMovement : MonoBehaviour
     {
         _rigidbody.AddForce(Vector3.up * _playerJumpForce); // jump method
         // invoke counter method  
+    }
+
+    private void Move()
+    {
+        float moveZAxis = Input.GetAxis("Vertical") * _playerSpeed * Time.deltaTime;
+        float moveXAxis = Input.GetAxis("Horizontal") * _playerSpeed * Time.deltaTime;
+
+        Vector3 moveVector = new Vector3(moveXAxis, 0f, moveZAxis); 
+
+        _rigidbody.AddForce(moveVector * _playerSpeed);
     }
 }
