@@ -31,8 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        _rigidbody.AddForce(Vector3.up * _playerJumpForce); // jump method
-        // invoke counter method  
+        _rigidbody.AddForce(Vector3.up * _playerJumpForce);
     }
 
     private void Move()

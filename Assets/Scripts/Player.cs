@@ -16,13 +16,21 @@ public class Player : MonoBehaviour
         // player is Dead 
        Debug.Log("Player are dead now");
     }
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collider.GetComponent<TargetForWin>() != null)
+        if(other.CompareTag("WinTrigger"))
         {
+            //RestartLevel();
             Win();
         } 
+    }
 
+    private void OnTriggerExit(Collider collider)
+    {
+        if(collider.CompareTag("LevelBoundary"))
+        {
+            Die();
+        }
     }
 }
 
