@@ -5,6 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 
 {
+    private void Update()
+    {
+        if (transform.position.y > -10)
+            return;
+        Die();
+    }
     private void Win()
     {
         //win game

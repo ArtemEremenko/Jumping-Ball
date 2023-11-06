@@ -1155,7 +1155,7 @@ GameObject:
   - component: {fileID: 1411576542}
   - component: {fileID: 1411576544}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: TextCoinCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Counter 0
+  m_text: Coin counter 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1289,7 +1289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c92ac7c0751c14f86f9d2e9b19a190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpCounterText: {fileID: 1411576542}
+  _coinCounterText: {fileID: 0}
 --- !u!1 &1477135733
 GameObject:
   m_ObjectHideFlags: 0
