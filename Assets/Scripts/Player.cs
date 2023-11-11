@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-
 {
+    [SerializeField] private TimerForWin _timerForWin;
     private void Update()
     {
         if (transform.position.y > -10)
             return;
         Die();
     }
-    private void Win()
+    public void Win()
     {
         //win game
         Debug.Log("Player are Winner");
@@ -27,16 +27,27 @@ public class Player : MonoBehaviour
         if(other.CompareTag("WinTrigger"))
         {
             //RestartLevel();
-            Win();
+            _timerForWin.StartWinTimer();
+            //Win();
         } 
     }
 
     private void OnTriggerExit(Collider collider)
     {
-        if(collider.CompareTag("LevelBoundary"))
+        if (collider.CompareTag("WinTrigger"))
+        {
+            _timerForWin.ResetTimer();
+        }
+        
+        if (collider.CompareTag("LevelBoundary"))
         {
             Die();
         }
     }
+
+    /*private void OnTriggerStay(Collider collider)
+    {
+        _timerForWin.StartWinTimer();
+    }*/
 }
 
