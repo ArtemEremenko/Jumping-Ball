@@ -10,45 +10,29 @@ public class TimerForWin : MonoBehaviour
 
     [SerializeField] private Player _player;
 
-    private float _countdownTimer = 4;
-
-    private bool _isTimerStarted = false;
-
-    private void Awake()
-    {
-        gameObject.SetActive(false);
-    }
+    private float _countdownTimer = 3;
 
     private void Update()
     {
-        if (_isTimerStarted)
-        {
-            _countdownTimer -= Time.deltaTime;
-            //int minutes = Mathf.FloorToInt(_countdownTimer / 60);
-            _countdownTimer = Mathf.Max(0, _countdownTimer);
-
-            int seconds = Mathf.FloorToInt(_countdownTimer % 60);
-            //_timerText.text = _countdownTimer.ToString();
-            _timerText.text = string.Format("{0}", seconds);
+        _countdownTimer -= Time.deltaTime;
         
-            if (_countdownTimer <= 0)
-            {
-                _player.Win();
-                gameObject.SetActive(false);
-            }
+        _timerText.text = _countdownTimer.ToString("0");
+    
+        if (_countdownTimer <= 0)
+        {
+            _player.Win();
+            gameObject.SetActive(false);
         }
     }
 
     public void StartWinTimer()
     {
         gameObject.SetActive(true);
-        _isTimerStarted = true;
     }
     public void ResetTimer()
     {
         Debug.Log("Reset please");
-        _countdownTimer = 4;
-        _isTimerStarted = false;
+        _countdownTimer = 3;
         gameObject.SetActive(false);
     }
 }

@@ -44,10 +44,5 @@ public class Player : MonoBehaviour
             Die();
         }
     }
-
-    /*private void OnTriggerStay(Collider collider)
-    {
-        _timerForWin.StartWinTimer();
-    }*/
 }
 
