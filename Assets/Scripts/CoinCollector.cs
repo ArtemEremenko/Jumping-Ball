@@ -12,13 +12,12 @@ public class CoinCollector : MonoBehaviour
 
     private void OnTriggerEnter(Collider coinCollision)
     {
-        if (!coinCollision.CompareTag("Collectible"))
-            return;
-        
-        Destroy(coinCollision.gameObject);
-        
-        _coinCounter ++;
-        _coinCounterText.color = Color.magenta;
-        _coinCounterText.text = "Coin counter " + _coinCounter.ToString();
+        if (coinCollision.GetComponent<CoinComponent>() != null)
+        {
+            Destroy(coinCollision.gameObject);
+            _coinCounter ++;
+            _coinCounterText.color = Color.magenta;
+            _coinCounterText.text = "Coin counter " + _coinCounter.ToString();
+        }
     }
 }

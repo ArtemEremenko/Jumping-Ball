@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("WinTrigger"))
+        if(other.GetComponent<WinComponent>())
         {
             //RestartLevel();
             _timerForWin.StartWinTimer();
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit(Collider collider)
     {
-        if (collider.CompareTag("WinTrigger"))
+        if (collider.GetComponent<WinComponent>() != null)
         {
             _timerForWin.ResetTimer();
         }
