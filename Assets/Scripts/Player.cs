@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private TMP_Text _winText;
+    [SerializeField] private TMP_Text _loseText;
     [SerializeField] private TimerForWin _timerForWin;
+    [SerializeField] private RestartButton _restartButton;
+    [SerializeField] private MenuButton _menuButton;
+
     private void Update()
     {
         if (transform.position.y > -10)
@@ -13,22 +19,25 @@ public class Player : MonoBehaviour
     }
     public void Win()
     {
-        //win game
-        Debug.Log("Player are Winner");
+        _winText.gameObject.SetActive(true);
+        _restartButton.gameObject.SetActive(true);
+        _menuButton.gameObject.SetActive(true);
+        Time.timeScale = 0;
     }
 
     private void Die()
     {
-        // player is Dead 
-       Debug.Log("Player are dead now");
+        _loseText.gameObject.SetActive(true);
+        _restartButton.gameObject.SetActive(true);
+        _menuButton.gameObject.SetActive(true);
+        Time.timeScale = 0;
     }
+    
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<WinComponent>())
         {
-            //RestartLevel();
             _timerForWin.StartWinTimer();
-            //Win();
         } 
     }
 

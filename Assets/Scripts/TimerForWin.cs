@@ -31,7 +31,6 @@ public class TimerForWin : MonoBehaviour
     }
     public void ResetTimer()
     {
-        Debug.Log("Reset please");
         _countdownTimer = 3;
         gameObject.SetActive(false);
     }
